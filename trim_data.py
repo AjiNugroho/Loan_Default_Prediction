@@ -13,6 +13,11 @@ def drop_null_columns(data):
     return None
 
 
+def drop_emp_title(data):
+    data.drop('emp_title', axis=1, inplace=True)
+    return None
+
+
 def split_loan_in_progress(data):
     """Return table of loan in progress. It drops the loan in progress from loan data internally."""
     progress_bool = data.loan_status.isin(feature_index.in_progress_index)
@@ -40,3 +45,9 @@ def categorize_target(data):
 def ext_num_from_sub_grade(data):
     data['sub_grade'] = data['sub_grade'].map(lambda x: int(x.lstrip('ABCDEFG')))
     return data
+
+
+def fill_na_annual_inc(data):
+    data.annual_inc.fillna(data.annual_inc.median(), inplace=True)
+    return None
+
