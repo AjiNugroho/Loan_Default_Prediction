@@ -4,23 +4,16 @@ Created on 7/13/17
 Author: Jihoon Kim
 """
 
+# import modules
 import pandas as pd
 
+from trim_data import drop_null_columns, split_loan_in_progress
+
+# load data
 loan = pd.read_csv('./data/loan.csv')
-lending = pd.read_csv('./data/lending_club_data.csv')
 
-lending[lending.bad_loans==1].loan_status.value_counts()
+# preprocess data
+drop_null_columns(loan)
+loan_in_progress = split_loan_in_progress(loan)
 
 
-bad_index = ['Charged Off',
-             'Does not meet the credit policy. Status:Charged Off',
-             'Default']
-
-lending_bad = ['Charged Off',
-               'Does not meet the credit policy.  Status:Charged Off',
-               'Default']
-
-lending.loan_status.value_counts()
-lending[lending.loan_status.isin(lending_bad)].loan_status.value_counts()
-loan.loan_status.value_counts()
-loan[loan.loan_status.isin(bad_index)].loan_status.value_counts()
