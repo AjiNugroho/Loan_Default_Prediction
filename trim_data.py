@@ -27,6 +27,10 @@ def drop_zip_code(data):
     data.drop('zip_code', axis=1, inplace=True)
     return None
 
+def drop_earliest_cr_line(data):
+    data.drop('earliest_cr_line', axis=1, inplace=True)
+    return None
+
 
 def split_loan_in_progress(data):
     """Return table of loan in progress. It drops the loan in progress from loan data internally."""
@@ -64,4 +68,20 @@ def fill_na_annual_inc(data):
 
 def fill_na_title(data):
     data.title.fillna('Unknown', inplace=True)
+    return None
+
+def fill_na_delinq_2yrs(data):
+    data.delinq_2yrs.fillna(data.delinq_2yrs.median(), inplace=True)
+    return None
+
+def fill_na_inq_last_6mths(data):
+    data.inq_last_6mths.fillna(data.inq_last_6mths.median(), inplace=True)
+    return None
+
+def fill_na_open_acc(data):
+    data.open_acc.fillna(data.open_acc.median(), inplace=True)
+    return None
+
+def fill_na_pub_rec(data):
+    data.pub_rec.fillna(data.pub_rec.median(), inplace=True)
     return None

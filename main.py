@@ -14,6 +14,11 @@ from trim_data import drop_emp_title
 from trim_data import fill_na_annual_inc
 from trim_data import fill_na_title
 from trim_data import drop_zip_code
+from trim_data import fill_na_delinq_2yrs
+from trim_data import drop_earliest_cr_line
+from trim_data import fill_na_inq_last_6mths
+from trim_data import fill_na_open_acc
+from trim_data import fill_na_pub_rec
 
 
 # load data
@@ -30,6 +35,8 @@ drop_emp_title(loan)
 fill_na_annual_inc(loan)
 fill_na_title(loan)
 drop_zip_code(loan)
-
-
-
+fill_na_delinq_2yrs(loan)
+drop_earliest_cr_line(loan)
+fill_na_inq_last_6mths(loan)
+fill_na_open_acc(loan)
+fill_na_pub_rec(loan)
