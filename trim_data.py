@@ -18,6 +18,16 @@ def drop_emp_title(data):
     return None
 
 
+def drop_url(data):
+    data.drop('url', axis=1, inplace=True)
+    return None
+
+
+def drop_zip_code(data):
+    data.drop('zip_code', axis=1, inplace=True)
+    return None
+
+
 def split_loan_in_progress(data):
     """Return table of loan in progress. It drops the loan in progress from loan data internally."""
     progress_bool = data.loan_status.isin(feature_index.in_progress_index)
@@ -51,3 +61,7 @@ def fill_na_annual_inc(data):
     data.annual_inc.fillna(data.annual_inc.median(), inplace=True)
     return None
 
+
+def fill_na_title(data):
+    data.title.fillna('Unknown', inplace=True)
+    return None

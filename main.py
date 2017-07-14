@@ -12,6 +12,8 @@ from trim_data import categorize_target
 from trim_data import ext_num_from_sub_grade
 from trim_data import drop_emp_title
 from trim_data import fill_na_annual_inc
+from trim_data import fill_na_title
+from trim_data import drop_zip_code
 
 
 # load data
@@ -26,6 +28,8 @@ loan = categorize_target(loan)
 loan = ext_num_from_sub_grade(loan)
 drop_emp_title(loan)
 fill_na_annual_inc(loan)
+fill_na_title(loan)
+drop_zip_code(loan)
 
 
 
