@@ -31,6 +31,21 @@ def drop_earliest_cr_line(data):
     data.drop('earliest_cr_line', axis=1, inplace=True)
     return None
 
+def drop_out_prncp(data):
+    data.drop('out_prncp', axis=1, inplace=True)
+    return None
+
+def drop_out_prncp_inv(data):
+    data.drop('out_prncp_inv', axis=1, inplace=True)
+    return None
+
+def drop_total_rec_late_fee(data):
+    data.drop('total_rec_late_fee', axis=1, inplace=True)
+    return None
+
+def drop_recoveries(data):
+    data.drop('recoveries', axis=1, inplace=True)
+    return None
 
 def split_loan_in_progress(data):
     """Return table of loan in progress. It drops the loan in progress from loan data internally."""
@@ -84,4 +99,12 @@ def fill_na_open_acc(data):
 
 def fill_na_pub_rec(data):
     data.pub_rec.fillna(data.pub_rec.median(), inplace=True)
+    return None
+
+def fill_na_revol_util(data):
+    data.revol_util.fillna(data.revol_util.median(), inplace=True)
+    return None
+
+def fill_na_total_acc(data):
+    data.total_acc.fillna(data.total_acc.median(), inplace=True)
     return None

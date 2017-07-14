@@ -19,7 +19,12 @@ from trim_data import drop_earliest_cr_line
 from trim_data import fill_na_inq_last_6mths
 from trim_data import fill_na_open_acc
 from trim_data import fill_na_pub_rec
-
+from trim_data import fill_na_revol_util
+from trim_data import fill_na_total_acc
+from trim_data import drop_out_prncp
+from trim_data import drop_out_prncp_inv
+from trim_data import drop_total_rec_late_fee
+from trim_data import drop_recoveries
 
 # load data
 loan = pd.read_csv('./data/loan.csv')
@@ -40,3 +45,9 @@ drop_earliest_cr_line(loan)
 fill_na_inq_last_6mths(loan)
 fill_na_open_acc(loan)
 fill_na_pub_rec(loan)
+fill_na_revol_util(loan)
+fill_na_total_acc(loan)
+drop_out_prncp(loan)
+drop_out_prncp_inv(loan)
+drop_total_rec_late_fee(loan)
+drop_recoveries(loan)
