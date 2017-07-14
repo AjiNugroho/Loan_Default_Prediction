@@ -43,3 +43,8 @@ safe_index = ['Fully Paid',
               ]
 
 in_progress_index = ['Current', 'Issued']
+
+target = ['loan_status_coded']
+
+features = ['loan_amnt', 'funded_amnt', 'funded_amnt_inv', 'term', 'int_rate',
+            'installment', 'grade', 'sub_grade']

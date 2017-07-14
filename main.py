@@ -12,10 +12,12 @@ from trim_data import drop_null_columns, split_loan_in_progress, categorize_targ
 # load data
 loan = pd.read_csv('./data/loan.csv')
 
-# preprocess data
+# pre-process data
 drop_null_columns(loan)
 loan_in_progress = split_loan_in_progress(loan)
 loan = categorize_target(loan)
+
+
 
 
 
