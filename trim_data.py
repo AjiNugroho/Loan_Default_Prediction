@@ -35,3 +35,8 @@ def categorize_target(data):
     data['loan_status_coded'] = data.apply(func, axis=1)
     data.drop('loan_status', axis=1, inplace=True)
     return data
+
+
+def ext_num_from_sub_grade(data):
+    data['sub_grade'] = data['sub_grade'].map(lambda x: int(x.lstrip('ABCDEFG')))
+    return data
