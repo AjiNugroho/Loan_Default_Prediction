@@ -22,7 +22,7 @@ def split_loan_in_progress(data):
 
 
 def categorize_target(data):
-    """It encodes loan status in 3 categories: Safe, Warning and Bad"""
+    """Returns encoded loan status: Safe, Warning and Bad"""
 
     def func(x):
         if x['loan_status'] in feature_index.bad_index:
