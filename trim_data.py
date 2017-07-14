@@ -16,6 +16,22 @@ def drop_null_columns(data):
 def split_loan_in_progress(data):
     """Return table of loan in progress. It drops the loan in progress from loan data internally."""
     progress_bool = data.loan_status.isin(feature_index.in_progress_index)
-    loan_in_progress = data[progress_bool]
+    loan_in_progress = data[progress_bool].drop('loan_status', axis=1)
     data.drop(list(loan_in_progress.index), axis=0, inplace=True)
     return loan_in_progress
+
+
+def categorize_target(data):
+    """It encodes loan status in 3 categories: Safe, Warning and Bad"""
+
+    def func(x):
+        if x['loan_status'] in feature_index.bad_index:
+            return 0
+        elif x['loan_status'] in feature_index.warning_index:
+            return 1
+        else:
+            return 2
+
+    data['loan_status_coded'] = data.apply(func, axis=1)
+    data.drop('loan_status', axis=1, inplace=True)
+    return data
