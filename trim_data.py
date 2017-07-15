@@ -47,6 +47,39 @@ def drop_recoveries(data):
     data.drop('recoveries', axis=1, inplace=True)
     return None
 
+def drop_collection_recovery_fee(data):
+    data.drop('collection_recovery_fee', axis=1, inplace=True)
+    return None
+
+def drop_last_pymnt_d(data):
+    data.drop('last_pymnt_d', axis=1, inplace=True)
+    return None
+
+def drop_collections_12_mths_ex_med(data):
+    data.drop('collections_12_mths_ex_med', axis=1, inplace=True)
+    return None
+
+def drop_policy_code(data):
+    data.drop('policy_code', axis=1, inplace=True)
+    return None
+
+def drop_application_type(data):
+    data.drop('application_type', axis=1, inplace=True)
+    return None
+
+
+def drop_acc_now_delinq(data):
+    data.drop('acc_now_delinq', axis=1, inplace=True)
+    return None
+
+def drop_tot_cur_bal(data):
+    data.drop('tot_cur_bal', axis=1, inplace=True)
+    return None
+
+def drop_tot_coll_amt(data):
+    data.drop('tot_coll_amt', axis=1, inplace=True)
+    return None
+
 def split_loan_in_progress(data):
     """Return table of loan in progress. It drops the loan in progress from loan data internally."""
     progress_bool = data.loan_status.isin(feature_index.in_progress_index)
@@ -107,4 +140,12 @@ def fill_na_revol_util(data):
 
 def fill_na_total_acc(data):
     data.total_acc.fillna(data.total_acc.median(), inplace=True)
+    return None
+
+def fill_na_last_credit_pull_d(data):
+    data.last_credit_pull_d.fillna('Unknown', inplace=True)
+    return None
+
+def fill_na_total_rev_hi_lim(data):
+    data.total_rev_hi_lim.fillna(data.total_rev_hi_lim.median(), inplace=True)
     return None
