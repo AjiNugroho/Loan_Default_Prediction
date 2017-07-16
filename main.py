@@ -9,6 +9,7 @@ import pandas as pd
 from feature_eng import trim_features
 from trim_data import drop_null_columns, categorize_target, split_loan_in_progress
 from one_hot_encoding import one_hot_encoder
+from sklearn.model_selection import train_test_split
 import feature_index
 
 
@@ -26,3 +27,8 @@ trim_features(loan)
 # one-hot encoding
 loan = loan[feature_index.features]
 loan_one_hot_encoded = one_hot_encoder(loan)
+
+# Train-Test split
+y = loan_one_hot_encoded.loan_status_coded
+X = loan_one_hot_encoded.drop("loan_status_coded", axis=1)
+x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2, stratify=y)
