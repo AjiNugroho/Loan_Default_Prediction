@@ -80,6 +80,14 @@ def drop_tot_coll_amt(data):
     data.drop('tot_coll_amt', axis=1, inplace=True)
     return None
 
+def drop_pymnt_plan(data):
+    data.drop('pymnt_plan', axis=1, inplace=True)
+    return None
+
+def drop_title(data):
+    data.drop('title', axis=1, inplace=True)
+    return None
+
 def split_loan_in_progress(data):
     """Return table of loan in progress. It drops the loan in progress from loan data internally."""
     progress_bool = data.loan_status.isin(feature_index.in_progress_index)
