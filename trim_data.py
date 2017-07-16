@@ -88,6 +88,18 @@ def drop_title(data):
     data.drop('title', axis=1, inplace=True)
     return None
 
+def drop_issue_d(data):
+    data.drop('issue_d', axis=1, inplace=True)
+    return None
+
+def drop_addr_state(data):
+    data.drop('addr_state', axis=1, inplace=True)
+    return None
+
+def drop_last_credit_pull_d(data):
+    data.drop('last_credit_pull_d', axis=1, inplace=True)
+    return None
+
 def split_loan_in_progress(data):
     """Return table of loan in progress. It drops the loan in progress from loan data internally."""
     progress_bool = data.loan_status.isin(feature_index.in_progress_index)
