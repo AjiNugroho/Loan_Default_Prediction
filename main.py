@@ -48,7 +48,7 @@ model.add(Dense(164, input_dim=325, activation='relu'))
 model.add(Dense(3, activation='softmax'))
 # Compile model
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-model.fit(np.array(x_train), np.array(y_train), epochs=1, batch_size=10, verbose=1)
+model.fit(np.array(x_train), np.array(y_train), epochs=20, batch_size=10, verbose=1)
 scores = model.evaluate(np.array(x_test), np.array(y_test), verbose=0)
 print("====================[TEST SCORE]====================")
 print("%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
