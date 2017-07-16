@@ -14,6 +14,7 @@ from one_hot_encoding import encode_neural_net_y
 from sklearn.model_selection import train_test_split
 from keras.models import Sequential
 from keras.layers import Dense
+from keras.models import load_model
 import feature_index
 
 
@@ -43,12 +44,14 @@ y_test = encode_neural_net_y(y_test)
 
 # create model
 model = Sequential()
-model.add(Dense(163, input_dim=325, activation='relu'))
-model.add(Dense(80, activation='softmax'))
+model.add(Dense(164, input_dim=325, activation='relu'))
 model.add(Dense(3, activation='softmax'))
 # Compile model
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-model.fit(np.array(x_train), np.array(y_train), epochs=10, batch_size=10, verbose=1)
+model.fit(np.array(x_train), np.array(y_train), epochs=1, batch_size=10, verbose=1)
 scores = model.evaluate(np.array(x_test), np.array(y_test), verbose=0)
 print("====================[TEST SCORE]====================")
 print("%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
+
+# Save model
+model.save('neural_net_model.h5')
