@@ -32,6 +32,10 @@ from trim_data import drop_tot_cur_bal
 from trim_data import fill_na_total_rev_hi_lim
 from trim_data import drop_url
 from trim_data import drop_pymnt_plan
+from trim_data import drop_issue_d
+from trim_data import drop_addr_state
+from trim_data import drop_last_credit_pull_d
+
 
 def trim_features(loan):
     ext_num_from_sub_grade(loan)
@@ -60,3 +64,6 @@ def trim_features(loan):
     drop_tot_coll_amt(loan)
     drop_tot_cur_bal(loan)
     fill_na_total_rev_hi_lim(loan)
+    drop_issue_d(loan)
+    drop_addr_state(loan)
+    drop_last_credit_pull_d(loan)

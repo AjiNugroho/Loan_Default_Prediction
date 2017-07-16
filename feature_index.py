@@ -48,12 +48,12 @@ target = ['loan_status_coded']
 
 features = ['loan_amnt', 'funded_amnt', 'funded_amnt_inv', 'term', 'int_rate',
             'installment', 'grade', 'sub_grade', 'emp_length', 'home_ownership',
-            'annual_inc', 'verification_status', 'issue_d', 'purpose', 'addr_state', 'dti',
+            'annual_inc', 'verification_status', 'purpose', 'dti',
             'delinq_2yrs', 'inq_last_6mths', 'open_acc', 'revol_bal', 'revol_util',
             'total_acc', 'initial_list_status', 'total_pymnt', 'total_pymnt_inv',
             'total_rec_prncp', 'total_rec_int', 'total_rec_late_fee', 'last_pymnt_amnt',
-            'last_credit_pull_d', 'total_rev_hi_lim', 'loan_status_coded']
+            'total_rev_hi_lim', 'loan_status_coded']
 
 categorical = ['term', 'grade', 'emp_length', 'home_ownership', 'verification_status',
-               'issue_d', 'purpose', 'addr_state', 'initial_list_status', 'last_credit_pull_d']
+               'purpose', 'initial_list_status']
 
