@@ -16,6 +16,8 @@ from keras.models import Sequential
 from keras.layers import Dense
 from keras.models import load_model
 import feature_index
+from keras.layers.normalization import BatchNormalization
+from oversample_by_SMOTE import oversample_smote
 
 
 # load data
@@ -38,17 +40,21 @@ y = loan_one_hot_encoded.loan_status_coded
 X = loan_one_hot_encoded.drop("loan_status_coded", axis=1)
 x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2, stratify=y)
 
+# oversample_SMOTE
+#x_train, y_train = oversample_smote(x_train, y_train)
+
 # Neural Network model
 y_train = encode_neural_net_y(y_train)
 y_test = encode_neural_net_y(y_test)
 
 # create model
 model = Sequential()
-model.add(Dense(164, input_dim=325, activation='relu'))
+model.add(Dense(35, input_dim=67, activation='relu'))
+model.add(BatchNormalization())
 model.add(Dense(3, activation='softmax'))
 # Compile model
-model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-model.fit(np.array(x_train), np.array(y_train), epochs=20, batch_size=10, verbose=1)
+model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['acc'])
+model.fit(np.array(x_train), np.array(y_train), epochs=10, batch_size=25, verbose=1)
 scores = model.evaluate(np.array(x_test), np.array(y_test), verbose=0)
 print("====================[TEST SCORE]====================")
 print("%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
