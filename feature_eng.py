@@ -22,7 +22,6 @@ from trim_data import drop_total_rec_late_fee
 from trim_data import drop_recoveries
 from trim_data import drop_collection_recovery_fee
 from trim_data import drop_last_pymnt_d
-from trim_data import fill_na_last_credit_pull_d
 from trim_data import drop_collections_12_mths_ex_med
 from trim_data import drop_policy_code
 from trim_data import drop_application_type
@@ -51,12 +50,12 @@ def trim_features(loan):
     fill_na_total_acc(loan)
     drop_pymnt_plan(loan)
     drop_url(loan)
+    drop_total_rec_late_fee(loan)
     drop_out_prncp(loan)
     drop_out_prncp_inv(loan)
     drop_recoveries(loan)
     drop_collection_recovery_fee(loan)
     drop_last_pymnt_d(loan)
-    fill_na_last_credit_pull_d(loan)
     drop_collections_12_mths_ex_med(loan)
     drop_policy_code(loan)
     drop_application_type(loan)

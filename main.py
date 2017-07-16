@@ -18,7 +18,10 @@ from keras.models import load_model
 import feature_index
 from keras.layers.normalization import BatchNormalization
 from oversample_by_SMOTE import oversample_smote
+import sys
 
+# sys info
+print(sys.version)
 
 # load data
 loan = pd.read_csv('./data/loan.csv')
@@ -49,15 +52,16 @@ y_test = encode_neural_net_y(y_test)
 
 # create model
 model = Sequential()
-model.add(Dense(35, input_dim=67, activation='relu'))
+model.add(Dense(35, input_dim=66, activation='relu'))
 model.add(BatchNormalization())
 model.add(Dense(3, activation='softmax'))
 # Compile model
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['acc'])
-model.fit(np.array(x_train), np.array(y_train), epochs=10, batch_size=25, verbose=1)
+model.fit(np.array(x_train), np.array(y_train), epochs=10, batch_size=40, verbose=1)
 scores = model.evaluate(np.array(x_test), np.array(y_test), verbose=0)
 print("====================[TEST SCORE]====================")
 print("%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
+
 
 # Save model
 model.save('neural_net_model.h5')
