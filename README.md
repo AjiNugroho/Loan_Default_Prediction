@@ -24,7 +24,7 @@ Test Data    : 55,428
 * seaborn 0.7.1
 * (Optional) imbalanced-learn 0.2.1 (for upsampling by SMOTE)
 
-## Performance (Testset: 20% of entire data.)
+## Performance
 1. 3-class("bad", "warning" and "safe" loan) classifying: Approximately 90~94%
 2. 2-class("bad" and "safe") classifying: Approximately: > 98.5%
 
