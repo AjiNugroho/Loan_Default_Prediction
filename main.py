@@ -50,12 +50,10 @@ x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2, stratif
 y_train = encode_neural_net_y(y_train)
 y_test = encode_neural_net_y(y_test)
 
-# create model
 model = Sequential()
 model.add(Dense(35, input_dim=66, activation='relu'))
 model.add(BatchNormalization())
 model.add(Dense(3, activation='softmax'))
-# Compile model
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['acc'])
 model.fit(np.array(x_train), np.array(y_train), epochs=10, batch_size=40, verbose=1)
 scores = model.evaluate(np.array(x_test), np.array(y_test), verbose=0)
