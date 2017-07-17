@@ -18,3 +18,6 @@ These files contain complete loan data for all loans issued through the 2007-201
 * pandas 0.20.2
 * seaborn 0.7.1
 * (Optional) imbalanced-learn 0.2.1 (for upsampling by SMOTE)
+
+## Performance
+1. 3-class("bad", "warning" and "safe" loan) classifying: $\sim 92\%$
